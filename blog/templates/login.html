@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container" style="margin-top: 20px">
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <h2 class="text-center" style="margin-bottom: 10px">Login</h2>
+      <form action="" method="post">
+        {% csrf_token %}
+        <input
+          class="form-control"
+          type="text"
+          name="username"
+          placeholder="Username"
+          style="margin-bottom: 20px"
+        />
+        <input
+          class="form-control"
+          type="password"
+          name="password"
+          id=""
+          style="margin-bottom: 20px"
+        />
+        <button class="btn btn-outline-primary">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
