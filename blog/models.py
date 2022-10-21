@@ -30,7 +30,10 @@ class Category(models.Model):
 class Like(models.Model):
     blog = models.ForeignKey(Blog, verbose_name=("Blog"), on_delete=models.CASCADE,related_name='likes')
     isLike = models.BooleanField(("Like"),default=False)
-    ip = models.CharField(("Ip"), max_length=50,unique=True)
+    ip = models.CharField(("Ip"), max_length=50)
+
+    def __str__(self):
+        return self.blog.name
     
 
 class Comment(models.Model):

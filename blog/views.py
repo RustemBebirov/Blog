@@ -7,19 +7,27 @@ def home(request):
     categories = Category.objects.all()
     blogs= Blog.objects.all()  
     ip = request.META.get('REMOTE_ADDR')
-    like = Like.objects.filter(ip=ip).first()
-    if(like):
-        context = {
-            'categories':categories,
-            'blogs':blogs,
-            'like':like
-        }
-    else:
-        context = {
-                'categories':categories,
-                'blogs':blogs,
-            }
+    for category in categories:
+        print(category.parent)
+    context = {
+        'categories':categories,
+        'blogs':blogs,
+        'ip':ip
+    }
     return render(request, 'index.html',context)
+
+def category(request,slug):
+    categories = Category.objects.all()
+    blogs = Blog.objects.filter(category__slug=slug)
+    ip = request.META.get('REMOTE_ADDR')
+
+    context = {
+        'categories':categories,
+        'blogs':blogs,
+        'ip':ip
+    }
+
+    return render(request, 'category.html',context)
 
 def like_blog(request,pk):
     ip = request.META.get('REMOTE_ADDR')
@@ -29,8 +37,9 @@ def like_blog(request,pk):
         isLike=True,
         ip=ip
     )
-    print('ela')
     return HttpResponseRedirect(url)
+
+
 
 
 def login(request):

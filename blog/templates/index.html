@@ -4,9 +4,18 @@
     <div class="col-4">
       <div class="category">
         <h2>Categories</h2>
-        <ul class="list-group list-group-flush">
-          {% for category in categories %}
-          <li class="list-group-item"><a href="">{{category.name}}</a></li>
+        <ul class="list-group">
+          {% for category in categories %} 
+          {% if not category.parent %}
+          
+          <li class="list-group-item"><a href="{% url 'category' category.slug %}">{{category.name}}</a></li>
+          {% else %}
+          
+          
+            <li class="list-group-item sub"><a href="{% url 'category' category.slug %}">{{category.name}}</a></li>
+          
+          {% endif %}
+          
           {% endfor %}
         </ul>
       </div>
@@ -28,32 +37,28 @@
               alt=""
               style="margin-bottom: 10px"
             />
-            <h1 class="blog-title">
-              <a href="">{{blog.name}}</a>
+            <h1 class="blog-title" style="font-size: 25px">
+              <a  href="">{{blog.name}}</a>
             </h1>
-            <p class="blog-desc">
+            <p class="blog-desc" style="text-align: justify">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
               iste amet eum aliquam sequi ab incidunt cupiditate dolores
               consectetur expedita corrupti eius, deleniti nostrum dicta optio
               repellat reiciendis perferendis sint!
             </p>
             <div class="like-btn d-flex justify-content-end align-items-center">
-              {% if like.isLike %}
-
-              <i
-                style="color: red"
-                class="fa-regular fa-thumbs-up fa-2x position-relative"
-              >
-              </i>
-
+              {% if blog.likes.all %} {% for blog_like in blog.likes.all %} 
+              {% if blog_like.ip == ip %}
+              <i style="color: red" class="fa-regular fa-thumbs-up fa-2x"> </i>
+              {% endif %} 
+              {% endfor %}
               <span class="badge text-bg-info" style="margin-left: 10px"
                 >{{blog.likes.count}}</span
               >
               {% else %}
               <a href="{% url 'like' blog.id %}">
-                <i class="fa-regular fa-thumbs-up fa-2x position-relative"></i>
+                <i class="fa-regular fa-thumbs-up fa-2x"></i>
               </a>
-
               <span class="badge text-bg-info" style="margin-left: 10px"
                 >{{blog.likes.count}}</span
               >
