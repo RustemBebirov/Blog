@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container" style="margin-top: 20px">
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <h2 class="text-center" style="margin-bottom: 10px">Register</h2>
+      <form action="" method="post" id="register">
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <input
+          class="form-control"
+          type="text"
+          name="username"
+          placeholder="Username"
+          style="margin-bottom: 20px"
+          id="username"
+        />
+        <label for="firstname">FirstName</label>
+        <input
+          class="form-control"
+          type="text"
+          name="firstname"
+          placeholder="FirstName"
+          style="margin-bottom: 20px"
+          id="firstname"
+        />
+        <label for="lastname">LastName</label>
+        <input
+          class="form-control"
+          type="text"
+          name="lastname"
+          placeholder="LastName"
+          style="margin-bottom: 20px"
+          id="lastname"
+        />
+        <label for="password1">Password1</label>
+        <input
+          class="form-control"
+          type="password"
+          name="password1"
+          id="password1"
+          style="margin-bottom: 20px"
+          placeholder="Password"
+        />
+        <label for="password2">Password2</label>
+        <input
+          class="form-control"
+          type="password"
+          name="password2"
+          id="password2"
+          style="margin-bottom: 20px"
+          placeholder="Password"
+        />
+        <button style="float: right" class="btn btn-outline-primary">
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block script %}
+<script>
+  var password1 = document.querySelector("#password1");
+  var password2 = document.querySelector("#password2");
+  var form = document.querySelector("#register");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (password1.value == password2.value) {
+      form.submit();
+    } else {
+      password1.previousElementSibling.textContent = "Password did not match";
+      password2.previousElementSibling.textContent = "Password did not match";
+    }
+  });
+</script>
+
+{% endblock %}
