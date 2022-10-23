@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #intalled apps
+    'storages',
     'crispy_forms',
     'crispy_bootstrap5',
     #my apps
@@ -161,6 +162,7 @@ LOGGING = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -178,3 +180,9 @@ STATICFILES_DIRS = [
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
+
+AWS_S3_ACCESS_KEY_ID = 'AKIA4SPBW36LBST6P57L'
+AWS_S3_SECRET_ACCESS_KEY = '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'
+AWS_S3_CUSTOM_DOMAIN = 'my-blog-rustem.s3.eu-north-1.amazonaws.com'
+
+AWS_STORAGE_BUCKET_NAME = 'my-blog-rustem'
