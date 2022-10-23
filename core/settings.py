@@ -147,7 +147,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-STATIC_URL = 'static/'
+STATIC_HOST = "https://https://my-blog-rustem.herokuapp.com" if not DEBUG else ""
+STATIC_URL = STATIC_HOST + "static/"
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
