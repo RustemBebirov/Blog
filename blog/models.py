@@ -12,7 +12,7 @@ class Blog(models.Model):
     
     description = models.TextField("Description")
     name = models.CharField(("Name"),max_length=127)
-    image = models.ImageField(("Image"), upload_to='product_images')
+    image = models.ImageField(("Image"))
     createdAt = models.DateTimeField("Created Time",auto_now_add=True)
 
     def __str__(self):
