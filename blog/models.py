@@ -52,4 +52,23 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.user.username} in {self.blog}-a commenti"
+
+
+class About(models.Model):
+
+    title = models.CharField(("Title"), max_length=127)
+    text = models.TextField(("About Detail"))
+    img = models.ImageField(("Image"), upload_to='about_images')
+
+    def __str__(self):
+        return self.title
     
+
+class Contact(models.Model):
+
+    address = models.CharField(("Address"), max_length=127,null=True,blank=True)
+    phone = models.IntegerField(("Phone Number"),null=True,blank=True)
+    mail = models.EmailField(("Email"), max_length=254,null=True,blank=True)
+
+    def __str__(self):
+        return self.mail

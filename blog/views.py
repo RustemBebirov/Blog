@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login as django_login, logout as django_logout, authenticate
-from .models import Category,Blog,Like,Comment,User
-from .forms import RegisterForm
+from .models import Category,Blog,Like,Comment,User,About,Contact
+from . forms import BlogForm
 from django.contrib import messages
 
 
@@ -11,10 +11,12 @@ def home(request):
     categories = Category.objects.all()
     blogs= Blog.objects.all()  
     ip = request.META.get('REMOTE_ADDR')
+    form = BlogForm()
     context = {
         'categories':categories,
         'blogs':blogs,
-        'ip':ip
+        'ip':ip,
+        'form':form
     }
     return render(request, 'index.html',context)
 
@@ -67,6 +69,17 @@ def like_blog(request,pk):
         isLike=True,
         ip=ip
     )
+    messages.success(request, 'Blog successfuy liked')
+    return HttpResponseRedirect(url)
+
+def create_blog(request):
+    url = request.META.get('HTTP_REFERER')
+    if request.method == 'POST':
+        form = BlogForm(request.POST,request.FILES)
+        if form.is_valid():
+            blog = form.save()
+            blog.save()
+            messages.success(request, 'Blog successfuy created')
     return HttpResponseRedirect(url)
 
 
@@ -103,7 +116,7 @@ def login(request):
             messages.success(request, 'Login')
             return redirect('blog')
         else:
-            messages.warning(request, 'User is none')
+            messages.warning(request, 'User is not exists')
             return redirect('login')
 
     return render(request, 'login.html')
@@ -112,3 +125,12 @@ def login(request):
 def logout(request):
     django_logout(request)
     return redirect('blog')
+
+
+def about(request):
+    about_info = About.objects.filter(id=1).first()
+    return render(request,'about.html',{'about_info':about_info})
+
+def contact(request):
+    contact_info = Contact.objects.filter(id=1).first()
+    return render(request,'contact.html',{'contact_info':contact_info})

@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <h2 class="text-center mt-3">Contact Us</h2>
+  <div class="row justify-content-center">
+    <div class="col-sm-6 ">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Address : {{contact_info.address}}</li>
+        <li class="list-group-item">Phone :  {{contact_info.phone}}</li>
+        <li class="list-group-item">Email : {{contact_info.mail}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

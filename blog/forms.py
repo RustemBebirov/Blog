@@ -1,9 +1,7 @@
 from django import forms
-from .models import User
+from .models import Blog
 
-
-class RegisterForm(forms.ModelForm):
-
+class BlogForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ('__all__')
+        model = Blog
+        fields = '__all__'

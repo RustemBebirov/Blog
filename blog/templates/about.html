@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-3">About Us</h1>
+    <div class="row">   
+        <div class="col-sm-4" >
+            <div >
+                <img style="width: 400px;height: 500px;" class="fluid rounded" src="{{about_info.img.url}}" alt="">
+            </div>   
+        </div>
+        <div class="col-sm-8" style="padding: 20px;">
+            <h2 class="about_title">{{about_info.title}}</h2>
+            <p class="about_text">{{about_info.text}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
