@@ -96,8 +96,6 @@ else:
         'NAME': 'myblog',
         'USER': 'rustem',
         'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': '5432',
     }
 }
 
