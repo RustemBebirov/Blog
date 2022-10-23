@@ -145,7 +145,7 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3ManifestStaticStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
