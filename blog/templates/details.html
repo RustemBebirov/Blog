@@ -108,14 +108,14 @@
               
               {% endif %}
               <div class="like-btn d-flex align-items-center">
-                {% if blog.likes.all %}
+                
                 <a href="{% url 'like' blog.id %}">
                   <i class="fa-regular fa-thumbs-up fa-2x"></i>
                 </a>
                 <span class="badge text-bg-info" style="margin-left: 10px"
                   >{{blog.likes.count}}</span
                 >   
-                {% endif %}
+               
               </div>
             </div>
 
