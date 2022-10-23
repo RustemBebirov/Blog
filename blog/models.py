@@ -26,11 +26,16 @@ class Category(models.Model):
     #relation
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
     
-    slug = models.SlugField(max_length=255, unique=True,null=True,blank=True)
     name = models.CharField(("Name"),max_length=50, unique=True)
+    slug = models.SlugField(max_length=255, unique=True,null=True,blank=True)
+
+    class Meta:
+        ordering = ('-id',),
+        verbose_name_plural = "categories"
 
     def __str__(self):
         return self.name
+
 
 class Like(models.Model):
     #relation
@@ -64,6 +69,8 @@ class About(models.Model):
     text = models.TextField(("About Detail"))
     img = models.ImageField(("Image"), upload_to='about_images')
 
+    verbose_name_plural = "About Page"
+
     def __str__(self):
         return self.title
     
@@ -73,6 +80,9 @@ class Contact(models.Model):
     address = models.CharField(("Address"), max_length=127,null=True,blank=True)
     phone = models.IntegerField(("Phone Number"),null=True,blank=True)
     mail = models.EmailField(("Email"), max_length=254,null=True,blank=True)
+
+    class Meta:
+        verbose_name_plural = "Contact Page"
 
     def __str__(self):
         return self.mail
