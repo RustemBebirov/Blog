@@ -84,7 +84,6 @@ def create_blog(request):
 
 
 def register(request):
-    form = RegisterForm()
     if request.method == 'POST':
         data = request.POST
         username = data['username']
