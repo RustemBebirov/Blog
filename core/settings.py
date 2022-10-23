@@ -162,13 +162,12 @@ LOGGING = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-STATIC_HOST = "https://my-blog-rustem.herokuapp.com" if not DEBUG else ""
-STATIC_URL = STATIC_HOST + "static/"
+STATIC_URL = "static"
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
@@ -177,10 +176,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_URL = 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_ACCESS_KEY_ID = 'AKIA4SPBW36LP6YR2X2V'
 AWS_S3_SECRET_ACCESS_KEY = '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'
 AWS_S3_CUSTOM_DOMAIN = 'my-blog-rustem.s3.eu-north-1.amazonaws.com'
