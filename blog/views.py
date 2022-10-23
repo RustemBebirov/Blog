@@ -9,9 +9,8 @@ from django.contrib import messages
 def home(request):
     categories = Category.objects.all()
     blogs= Blog.objects.all()
-    key = '78063521daadcaa158964d08477b7b81' 
-    
     form = BlogForm()
+    
     context = {
         'categories':categories,
         'blogs':blogs,
