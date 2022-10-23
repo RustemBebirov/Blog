@@ -60,6 +60,26 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      function getWheather(){
+        var lat = 40.3755885
+        var lon = 49.8328009
+        var url2 = `https://api.openweathermap.org/data/3.0/onecall?lat=40.3755885&lon=49.8328009&exclude=hourly,daily&appid=78063521daadcaa158964d08477b7b81`
+        var url = "http://api.openweathermap.org/geo/1.0/direct?q=Baku&limit=5&appid=78063521daadcaa158964d08477b7b81"
+        const request = new XMLHttpRequest()
+        request.open('GET',url2)
+        request.send()
+        console.log(request)
+
+        request.addEventListener('load',function(){
+          const data = JSON.parse(request.responseText)
+          console.log(data)
+        })
+
+      }
+
+      getWheather()
+      
+  
       var messages = document.querySelector('.messages')
       if (messages){
         setTimeout(function(){

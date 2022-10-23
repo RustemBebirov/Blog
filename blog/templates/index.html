@@ -82,7 +82,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <div>
                 {% for cat in blog.category.all %}
-                <a class="btn btn-outline-info" href="{% url 'category' cat.slug %}">{{cat.name}}</a>
+                <a class="btn btn-outline-info my-1" href="{% url 'category' cat.slug %}">{{cat.name}}</a>
                 {% endfor %}
               </div>
               <div class="like-btn d-flex justify-content-end align-items-center">

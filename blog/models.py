@@ -13,7 +13,10 @@ class Blog(models.Model):
     description = models.TextField("Description")
     name = models.CharField(("Name"),max_length=127)
     image = models.ImageField(("Image"))
-    createdAt = models.DateTimeField("Created Time",auto_now_add=True)
+    createdAt = models.DateTimeField(("Created Time"), auto_now_add=True)
+
+    class Meta:
+        ordering = ('-createdAt',)
 
     def __str__(self):
         return self.name
@@ -47,7 +50,9 @@ class Comment(models.Model):
 
 
     comment = models.TextField(("Comment"))
-    createdAt = models.DateTimeField("Created Time",auto_now_add=True) 
+    createdAt = models.DateTimeField("Created Time",auto_now_add=True)
+    class Meta:
+        ordering = ('-createdAt',)
 
     def __str__(self):
         return f"{self.user.username} in {self.blog}-a commenti"
