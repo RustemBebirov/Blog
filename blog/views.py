@@ -15,7 +15,6 @@ def home(request):
     context = {
         'categories':categories,
         'blogs':blogs,
-        'ip':ip,
         'form':form
     }
     return render(request, 'index.html',context)
@@ -28,7 +27,6 @@ def category(request,slug):
     context = {
         'categories':categories,
         'blogs':blogs,
-        'ip':ip
     }
 
     return render(request, 'category.html',context)
@@ -37,7 +35,7 @@ def blog_details(request,pk):
     blog = get_object_or_404(Blog,id=pk)
     comments = Comment.objects.filter(blog_id=blog.id)
     categories = Category.objects.all()
-    ip = request.META.get('REMOTE_ADDR')
+    
 
     if request.method == "POST":
         url = request.META.get('HTTP_REFERER')
@@ -56,18 +54,15 @@ def blog_details(request,pk):
         'blog':blog,
         'categories':categories,
         'comments':comments,
-        'ip':ip
     }
     return render(request, 'details.html',context)
 
 
 def like_blog(request,pk):
-    ip = request.META.get('REMOTE_ADDR')
     url = request.META.get('HTTP_REFERER')
     like = Like.objects.create(
         blog_id=pk,
         isLike=True,
-        ip=ip
     )
     messages.success(request, 'Blog successfuy liked')
     return HttpResponseRedirect(url)

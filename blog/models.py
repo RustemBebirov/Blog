@@ -34,7 +34,6 @@ class Like(models.Model):
     blog = models.ForeignKey(Blog, verbose_name=("Blog"), on_delete=models.CASCADE,related_name='likes')
     
     isLike = models.BooleanField(("Like"),default=False)
-    ip = models.CharField(("Ip"), max_length=50)
     createdAt = models.DateTimeField("Created Time",auto_now_add=True)
 
     def __str__(self):

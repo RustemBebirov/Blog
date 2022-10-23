@@ -40,7 +40,7 @@
       
       <div class="category ">
         <h2>Categories</h2>
-        <ul class="list-group list-group-flush">
+        <ul class="list-group">
           {% for category in categories %} 
           {% if not category.parent %}
           
@@ -87,22 +87,14 @@
               </div>
               <div class="like-btn d-flex justify-content-end align-items-center">
                 {% if blog.likes.all %} 
-                {% for blog_like in blog.likes.all %} 
-                {% if blog_like.ip == ip %}
-                <i style="color: red" class="fa-regular fa-thumbs-up fa-2x"> </i>
-                {% endif %} 
-                {% endfor %}
-                <span class="badge text-bg-info" style="margin-left: 10px"
-                  >{{blog.likes.count}}</span
-                >
-                {% else %}
                 <a href="{% url 'like' blog.id %}">
                   <i class="fa-regular fa-thumbs-up fa-2x"></i>
                 </a>
                 <span class="badge text-bg-info" style="margin-left: 10px"
                   >{{blog.likes.count}}</span
-                >
-                {% endif %}
+                >                
+              {% endif %}
+                  
               </div>
             </div>
             
