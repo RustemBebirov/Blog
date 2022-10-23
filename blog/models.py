@@ -30,7 +30,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=255, unique=True,null=True,blank=True)
 
     class Meta:
-        ordering = ('-id',),
+        ordering = ('-id',)
         verbose_name_plural = "categories"
 
     def __str__(self):
@@ -69,7 +69,8 @@ class About(models.Model):
     text = models.TextField(("About Detail"))
     img = models.ImageField(("Image"), upload_to='about_images')
 
-    verbose_name_plural = "About Page"
+    class Meta:
+        verbose_name_plural = "About Page"
 
     def __str__(self):
         return self.title
