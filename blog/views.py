@@ -10,7 +10,6 @@ from django.contrib import messages
 def home(request):
     categories = Category.objects.all()
     blogs= Blog.objects.all()  
-    ip = request.META.get('REMOTE_ADDR')
     form = BlogForm()
     context = {
         'categories':categories,
@@ -22,8 +21,7 @@ def home(request):
 def category(request,slug):
     categories = Category.objects.all()
     blogs = Blog.objects.filter(category__slug=slug)
-    ip = request.META.get('REMOTE_ADDR')
-
+ 
     context = {
         'categories':categories,
         'blogs':blogs,
