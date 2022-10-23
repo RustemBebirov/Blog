@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container" style="margin-top: 50px">
     <div class="row">
-      <div class="col-sm-3">
+      <div class="col-sm-3" style="padding: 10px">
         <div class="category">
           <h2>Categories</h2>
           <ul class="list-group">
@@ -44,10 +44,7 @@
                 <a  href="{% url 'details' blog.pk %}">{{blog.name}}</a>
               </h1>
               <p class="blog-desc" style="text-align: justify">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                iste amet eum aliquam sequi ab incidunt cupiditate dolores
-                consectetur expedita corrupti eius, deleniti nostrum dicta optio
-                repellat reiciendis perferendis sint!
+               {{blog.description}}
               </p>
               <div class="like-btn d-flex justify-content-end align-items-center">
                 {% if blog.likes.all %} {% for blog_like in blog.likes.all %} 
