@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -103,11 +106,11 @@ else:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd6irrk3lamrndc',
-        'USER': 'ybpdrosxmlolfc',
-        'PASSWORD': '1d72ae80c3bbb0580e99e2d71c93d537551ca52444ccc52fad34be1dc8da35d5',
+        'NAME': os.environ.get('NAME'),
+        'USER': os.environ.get('USER'),
+        'PASSWORD': os.environ.get('PASSWORD'),
         'PORT':'5432',
-        'HOST':'ec2-54-228-218-84.eu-west-1.compute.amazonaws.com'
+        'HOST':os.environ.get('HOST')
     }
 }
 
