@@ -74,7 +74,7 @@
               <a  href="{% url 'details' blog.pk %}">{{blog.name}}</a>
             </h1>
             <p class="blog-desc text-capitalize" style="text-align: justify">
-              {{blog.description|truncatechars:7}}
+              {{blog.description|truncatechars:10}}
             </p>
             <div class="d-flex justify-content-between align-items-center">
               <div>
